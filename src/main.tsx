@@ -7,7 +7,7 @@ import Personagem from './components/Personagem.tsx';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '/reactWithAxios',
 		element: <App />,
 	},
 	{
