@@ -1,33 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-interface Personagem {
-	birth_year: string;
-	created: string;
-	edited: string;
-	eye_color: string;
-	films: string[];
-	gender: string;
-	hair_color: string;
-	height: string;
-	homeworld: string;
-	mass: string;
-	name: string;
-	skin_color: string;
-	species: string[];
-	starships: string[];
-	url: string;
-	vehicles: string[];
-}
-
-function App() {
-	const [person, setPerson] = useState<Personagem>({} as Personagem);
+const Personagem: React.FC = () => {
+	const [person, setPerson] = useState({});
 
 	const getData = useCallback(async () => {
 		await axios
-			.get('https://swapi.py4e.com/api/people/11')
+			.get('https://swapi.py4e.com/api/people/4')
 			.then(function (response) {
 				console.log(response.data);
 				setPerson(response.data);
@@ -52,52 +32,52 @@ function App() {
 						<h1 className='text-5xl font-lexend uppercase text-white font-bold'>
 							{person.name}
 						</h1>
-						<p className='text-2xl px-2 font-lexend uppercase text-gray'>
+						<p className='text-2xl px-2 font-lexend uppercase text-white'>
 							{person.birth_year}
 						</p>
 					</div>
 				</div>
 
 				<img
-					src='./anakin.png'
+					src='./vader.png'
 					loading='lazy'
-					className='justify-self-center z-10 h-5/6 absolute pr-40 object-bottom'
+					className='justify-self-center z-10 h-5/6 absolute  object-bottom'
 					alt={person.name}
 				/>
 
-				<div className='justify-self-end w-1/2 h-4/5 self-end absolute text-lg z-0 bg-gray-200 rounded-t-md'>
+				<div className='justify-self-end w-1/2 h-4/5 self-end absolute text-lg z-0 bg-zinc-900 rounded-t-md'>
 					<div className='flex font-lexend justify-end px-10 py-5'>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>
 								Height:
 							</p>
-							<h1 className='text-black text-2xl font-bold'>
+							<h2 className='text-white'>
 								{person.height}cm
-							</h1>
+							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Mass:</p>
-							<h1 className='text-black text-2xl font-bold'>
+							<h2 className='text-white'>
 								{person.mass}kg
-							</h1>
+							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Hair:</p>
-							<h1 className='text-black text-2xl font-bold capitalize '>
+							<h2 className='text-white capitalize '>
 								{person.hair_color}
-							</h1>
+							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Skin:</p>
-							<h1 className='text-black text-2xl font-bold capitalize '>
+							<h2 className='text-white capitalize '>
 								{person.skin_color}
-							</h1>
+							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Eyes:</p>
-							<h1 className='text-black text-2xl font-bold capitalize '>
+							<h2 className='text-white capitalize '>
 								{person.eye_color}
-							</h1>
+							</h2>
 						</div>
 					</div>
 					<div className='flex font-lexend justify-end px-10 py-5'>
@@ -105,23 +85,23 @@ function App() {
 							<p className='text-gray-500'>
 								Gender:
 							</p>
-							<h1 className='text-black text-2xl font-bold capitalize '>
+							<h2 className='text-white capitalize '>
 								{person.gender}
-							</h1>
+							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>
 								HomeWorld:
 							</p>
-							<h1 className='text-black text-2xl font-bold'>
+							<h2 className='text-white'>
 								{person.homeworld}
-							</h1>
+							</h2>
 						</div>
 					</div>
 					<div className='flex justify-center'>
-						<Link to='/personagem'>
-							<button className='m-10 border transition-all justify-center motion-safe:animate-pulse border-solid hover:border-rose-600 hover:shadow-lg'>
-								SITH
+						<Link to='/'>
+							<button className='m-10 cursor-pointer border bg-zinc-800 transition-all animate-pulse hover:border-sky-600 hover:shadow-lg'>
+								JEDI
 							</button>
 						</Link>
 					</div>
@@ -129,7 +109,7 @@ function App() {
 			</div>
 		</section>
 	);
-}
+};
 
-export default App;
+export default Personagem;
 
