@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PersonagemData } from '../App';
 
 const Personagem: React.FC = () => {
-	const [person, setPerson] = useState({});
+	const [person, setPerson] = useState<PersonagemData>();
 
 	const getData = useCallback(async () => {
 		await axios
@@ -30,10 +31,10 @@ const Personagem: React.FC = () => {
 				<div className='justify-self-start self-end absolute z-20'>
 					<div className='flex items-end justify-end p-10'>
 						<h1 className='text-5xl font-lexend uppercase text-white font-bold'>
-							{person.name}
+							{person && person.name}
 						</h1>
 						<p className='text-2xl px-2 font-lexend uppercase text-white'>
-							{person.birth_year}
+							{person && person.birth_year}
 						</p>
 					</div>
 				</div>
@@ -42,7 +43,7 @@ const Personagem: React.FC = () => {
 					src='./vader.png'
 					loading='lazy'
 					className='justify-self-center z-10 h-5/6 absolute  object-bottom'
-					alt={person.name}
+					alt={person && person.name}
 				/>
 
 				<div className='justify-self-end w-1/2 h-4/5 self-end absolute text-lg z-0 bg-zinc-900 rounded-t-md'>
@@ -52,31 +53,31 @@ const Personagem: React.FC = () => {
 								Height:
 							</p>
 							<h2 className='text-white'>
-								{person.height}cm
+								{person && person.height}cm
 							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Mass:</p>
 							<h2 className='text-white'>
-								{person.mass}kg
+								{person && person.mass}kg
 							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Hair:</p>
 							<h2 className='text-white capitalize '>
-								{person.hair_color}
+								{person && person.hair_color}
 							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Skin:</p>
 							<h2 className='text-white capitalize '>
-								{person.skin_color}
+								{person && person.skin_color}
 							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
 							<p className='text-gray-500'>Eyes:</p>
 							<h2 className='text-white capitalize '>
-								{person.eye_color}
+								{person && person.eye_color}
 							</h2>
 						</div>
 					</div>
@@ -86,7 +87,7 @@ const Personagem: React.FC = () => {
 								Gender:
 							</p>
 							<h2 className='text-white capitalize '>
-								{person.gender}
+								{person && person.gender}
 							</h2>
 						</div>
 						<div className='flex flex-col items-end mx-5'>
@@ -94,7 +95,7 @@ const Personagem: React.FC = () => {
 								HomeWorld:
 							</p>
 							<h2 className='text-white'>
-								{person.homeworld}
+								{person && person.homeworld}
 							</h2>
 						</div>
 					</div>

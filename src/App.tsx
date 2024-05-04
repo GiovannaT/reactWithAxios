@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-interface Personagem {
+export interface PersonagemData {
 	birth_year: string;
 	created: string;
 	edited: string;
@@ -23,7 +23,9 @@ interface Personagem {
 }
 
 function App() {
-	const [person, setPerson] = useState<Personagem>({} as Personagem);
+	const [person, setPerson] = useState<PersonagemData>(
+		{} as PersonagemData
+	);
 
 	const getData = useCallback(async () => {
 		await axios
