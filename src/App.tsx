@@ -1,6 +1,9 @@
+import './App.css'
+
 import { useCallback, useState } from 'react';
 import './index.css';
 import axios from 'axios';
+import  Forms  from './pages/forms';
 interface advice {
   advice: string;
   id: number;
@@ -31,6 +34,7 @@ function App() {
           >
             test
           </button>
+          <Forms></Forms>
         </div>
       </div>
     </section>
@@ -40,4 +44,3 @@ function App() {
 export default App;
 
 //https://api.adviceslip.com/advice
-
